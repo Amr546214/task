@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="co">
+      <table class="table table-bordered my-2">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of rows">
+            <td>{{ row.id }}</td>
+            <td>
+              <input
+                *ngIf="row.isEditing"
+                class="form-control"
+                [(ngModel)]="row.name"
+                type="text"
+              />
+              <span *ngIf="!row.isEditing">{{ row.name }}</span>
+            </td>
+            <td>
+              <input
+                class="form-control"
+                *ngIf="row.isEditing"
+                [(ngModel)]="row.email"
+                type="email"
+              />
+              <span *ngIf="!row.isEditing">{{ row.email }}</span>
+            </td>
+            <td>
+              <button
+                class="btn btn-success"
+                *ngIf="!row.isEditing"
+                (click)="editRow(row)"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-primary"
+                *ngIf="row.isEditing"
+                (click)="saveRow(row)"
+              >
+                Save
+              </button>
+              <button class="btn btn-danger m-1" (click)="deleteRow(row.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" (click)="addRow()">Add Row</button>
+    </div>
+  </div>
+</div>

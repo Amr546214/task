@@ -1,0 +1,18 @@
+<div class="container mt-4">
+  <input
+    type="text"
+    class="form-control mb-3"
+    placeholder="Search by name..."
+    [(ngModel)]="searchText"
+  />
+  <div class="row">
+    <div class="col-md-4 mb-3" *ngFor="let user of filteredUsers">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.name }}</h5>
+          <p class="card-text">{{ user.address }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
